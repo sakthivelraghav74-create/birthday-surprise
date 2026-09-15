@@ -1,0 +1,247 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday 💗 grehitha</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #fff0f6, #ffd6e7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #5a2942;
+    }
+
+    .page {
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 45px 25px;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(160, 70, 110, 0.18);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .emoji {
+      font-size: 4rem;
+      margin-bottom: 15px;
+      animation: bounce 1.8s infinite;
+    }
+
+    button {
+      border: none;
+      background: #ff6fa5;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 7px 18px rgba(255, 111, 165, 0.35);
+      transition: 0.25s;
+    }
+
+    button:hover {
+      transform: scale(1.06);
+      background: #ff5796;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      animation: appear 0.8s ease;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -30px;
+      font-size: 20px;
+      animation: floatUp linear forwards;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+      }
+
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- FIRST SCREEN -->
+    <div id="welcome">
+      <div class="emoji">🎀</div>
+
+      <h1>Happy Birthday!</h1>
+
+      <p>
+        I made a little something special for you 💗
+      </p>
+
+      <button onclick="openSurprise()">
+        Open Your Surprise 🎁
+      </button>
+    </div>
+
+
+    <!-- SECOND SCREEN -->
+    <div id="message" class="hidden message">
+
+      <div class="emoji">🎂</div>
+
+      <h2>Happy Birthday 💗</h2>
+
+      <p>
+        I hope your birthday is filled with happiness,
+        laughter and lots of beautiful moments.
+      </p>
+
+      <p>
+        You are a really special person to me,
+        and I'm so happy to have you in my life. 💕
+      </p>
+
+      <button onclick="showFinal()">
+        One More Thing ✨
+      </button>
+
+    </div>
+
+
+    <!-- FINAL SCREEN -->
+    <div id="final" class="hidden message">
+
+      <div class="emoji">💗</div>
+
+      <h2>One Last Thing...</h2>
+
+      <p>
+        You deserve all the happiness in the world.
+        Never forget how special you are. 🥹
+      </p>
+
+      <p>
+        Happy Birthday again! 🎂🎀
+      </p>
+
+      <button onclick="createHearts()">
+        💕 Make It Rain Hearts
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function openSurprise() {
+      document.getElementById("welcome").classList.add("hidden");
+      document.getElementById("message").classList.remove("hidden");
+
+      createHearts();
+    }
+
+    function showFinal() {
+      document.getElementById("message").classList.add("hidden");
+      document.getElementById("final").classList.remove("hidden");
+
+      createHearts();
+    }
+
+    function createHearts() {
+
+      for (let i = 0; i < 25; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = Math.random() > 0.5 ? "💗" : "💕";
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.animationDuration =
+          (3 + Math.random() * 4) + "s";
+
+        heart.style.fontSize =
+          (15 + Math.random() * 20) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 7000);
+      }
+    }
+
+  </script>
+
+</body>
+</html>
+```
